@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование колледжа</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${univer}">
+    <h1>Редактирование колледжа</h1>
+    <form method="post" th:object="${univer}">
+        <input th:field="*{titleuniversity}" style="width: 250px; height: 40px; display: list-item" type="text" th:value="${univer.titleuniversity}" name="titluniver" placeholder="Введите название университета">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('titleuniversity')}" th:errors="*{titleuniversity}"></div><br>
+        <input th:field="*{numbTel}" style="width: 250px; height: 40px; display: list-item" type="tel" th:value="${univer.numbTel}" name="numbTel" placeholder="Введите номер телефона">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('numbTel')}" th:errors="*{numbTel}"></div><br>
+        <div>
+            <label>Выберите адрес для универа</label>
+            <select name="addresss_id" style="width: 250px; height: 40px; margin: 2px">
+                <div th:each="r : ${addresses}">
+                    <option  th:value="${r.id}" th:text="${r.addreses}" >
+                    </option>
+                </div>
+            </select>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

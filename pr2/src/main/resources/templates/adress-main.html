@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Адрес</title>
+</head>
+<body>
+<div>
+    <h1>Все адреса университетов</h1>
+    <a href="/" style="font-size: 20px">Главное Меню</a>
+    <a href="/adress/add" style="font-size: 20px">Добавить адрес</a>
+
+    <div th:each="el : ${address}">
+        <h2>-----------------------------------</h2>
+        <h3 th:text="${'Адрес: '+el.getAddreses()}"></h3>
+        <h5><a th:href="'/adress/'+${el.id}+'/edit'">Редактировать</a></h5>
+        <form th:action="'/adress/' + ${el.id} + '/remove'" method="post">
+            <button type="submit">Удалить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

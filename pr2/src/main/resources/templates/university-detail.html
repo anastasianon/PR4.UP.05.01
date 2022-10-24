@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Подробнее</title>
+</head>
+<body>
+
+<div th:each="el : ${univer}">
+    <h1>Подробности университета</h1>
+    <h4 th:text="'Название университета: '+${el.titleuniversity}"></h4>
+    <h4 th:text="'Контактный номер телефона: '+${el.numbTel}"></h4>
+    <h4 th:text="'Адрес университета: '+${el.address.addreses}"></h4>
+    <h5><a th:href="'/univer/'+${el.id}+'/edit'">Редактировать</a></h5>
+    <form th:action="'/univer/' + ${el.id} + '/remove'" method="post">
+        <button type="submit">Удалить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

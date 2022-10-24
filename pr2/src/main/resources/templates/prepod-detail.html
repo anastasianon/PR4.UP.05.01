@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Подробнее</title>
+</head>
+<body>
+<a href="/prepod">Меню</a>
+<div align="center" th:each="el : ${prepod}">
+    <h1>Информация о преподавателе</h1>
+    <h3 th:text="${'ФИ: '+el.surname}"></h3>
+    <h3 th:text="${el.name}"></h3>
+    <h3 th:text="${'Оклад: '+el.salary+' руб'}"></h3>
+    <h4 th:text="${'Предметы: '+el.predmets}"></h4>
+    <h4 th:text="${'Часы работы: '+el.openingHours}"></h4>
+    <h5><a th:href="'/prepod/'+${el.id}+'/edit'">Редактировать</a></h5>
+    <form th:action="'/prepod/' + ${el.id} + '/remove'" method="post">
+        <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Удалить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+</style>

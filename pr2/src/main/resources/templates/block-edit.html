@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Редактирование статьи</title>
+</head>
+<body>
+<div th:object="${post}">
+<a th:href="'/block/'+${id}">Назад</a>
+</div>
+<div align="left" th:each="el : ${post}">
+  <h1>Изменение данных статьи</h1>
+  <form method="post" th:object="${post}">
+    <input th:field="*{title}" style="width: 250px; height: 50px; margin: 4px; display: list-item" type="text" th:value="${post.title}" name="title" placeholder="Введите название статьи">
+    <input th:field="*{anons}" style="width: 250px; height: 50px; margin: 4px; display: list-item" type="text" th:value="${post.anons}" name="anons" placeholder="Введите анонс статьи">
+    <textarea th:field="*{full_text}" style="width: 300px; height: 100px; margin: 4px; display: list-item" th:text="${post.getFull_text()}" name="full_text" placeholder="Введите текст статьи"></textarea>
+    <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Сохранить</button>
+  </form>
+</div>
+
+</body>
+</html>
+<style>
+  body {
+    height: 800px;
+    background: radial-gradient(white, #FFA9A1);
+  }
+  a {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: #ce0606;
+  }
+
+  a:active {
+    background-color: #FFA9A1;
+    box-shadow: none;
+    top: 5px;
+  }
+  html *{
+    font-family: "Plus Jakarta Sans" !important;
+  }
+</style>

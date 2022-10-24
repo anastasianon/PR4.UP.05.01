@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Университет</title>
+</head>
+<body>
+<div>
+    <h1>-Университеты-</h1>
+    <a href="/" style="font-size: 20px">Главное Меню</a>
+    <a href="/univer/filter" style="font-size: 20px">Поиск универа</a>
+    <a href="/univer/add" style="font-size: 20px">Добавить универ</a>
+
+    <div th:each="el : ${university}">
+        <h2>-----------------------------------</h2>
+        <h3 th:text="${'Название колледжа: '+el.getTitleuniversity()}"></h3>
+        <a th:href="'/univer/'+${el.id}">Подробнее</a>
+    </div>
+</div>
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

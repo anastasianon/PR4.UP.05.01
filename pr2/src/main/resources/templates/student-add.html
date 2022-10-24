@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Добавление студента</title>
+</head>
+<body>
+<a href="/" class="asd">Меню</a>
+<form th:action = "${'/student/add'}" method="post" th:object="${student}">
+    <input th:field="*{surname}" type="text" name="Surname" style="width: 250px; height: 40px; margin-top: 30px" placeholder="Введите фамилию"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+    <input th:field="*{name}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Name" placeholder="Введите имя"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+    <a style="display: inline-block" >Нуждается в общежитии: </a><input th:field="*{dormitories}" style="width: 250px; height: 40px; margin: 2px" type="checkbox" name="Dormitories"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('dormitories')}" th:errors="*{dormitories}"></div><br>
+    <input th:field="*{groups}" style="width: 250px; height: 40px; margin: 2px" type="number" name="Group" placeholder="Введите номер группы"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('groups')}" th:errors="*{groups}"></div><br>
+    <input th:field="*{birthday}" style="width: 250px; height: 40px; margin: 2px" type="date" name="Birthday" placeholder="Введите день рождения"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
+    <div>
+        <label>Выберите университет</label>
+        <select name="univer_id">
+            <div th:each="r : ${univ}">
+                <option  th:value="${r.id}" th:text="${r.titleuniversity}" >
+                </option>
+            </div>
+        </select>
+    </div>
+    <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Добавить студента</button>
+</form>
+</body>
+</html>
+<style>
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+    a.asd  {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+     a.asd:hover {
+        background-color: #ce0606;
+    }
+
+     a.asd:active {
+         background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+</style>

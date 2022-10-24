@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Student</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<h1>Все Студенты</h1>
+<a href="/">Меню</a>
+<a href="/student/filter">Поиск студентов</a>
+<a href="/student/add">Добавить студента</a>
+<div th:each="el : ${student}">
+    <h2>-----------------------------------</h2>
+    <h3 th:text="${'ФИ: '+el.getSurname()}" style="display: inline-block;margin-left: 10px"></h3>
+    <h3 th:text="${el.getName()}" style="display: inline-block"></h3>
+    <h3 th:text="${'Нужда в общежитии: '+el.getDormitories()}" style="margin-left: 10px"></h3>
+    <h4 th:text="${'Группа: '+el.getGroups()}" style="margin-left: 10px"></h4>
+    <h4 th:text="${'День рождения: '+el.getBirthday()}" style="margin-left: 10px"></h4>
+    <a th:href="'/student/'+${el.id}">Подробнее</a>
+</div>
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+</style>

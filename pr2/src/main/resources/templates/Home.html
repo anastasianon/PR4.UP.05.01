@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<div th:insert="/blocks/Header"></div>
+<div align="center">
+<h1>Меню</h1>
+<a href="/block/">Статьи</a>
+<a href="/student/">Студенты</a>
+<a href="/prepod/">Преподаватели</a><br><br><br>
+<a href="/univer/">Университеты</a><br><br><br>
+<a href="/adress/">Адрес</a>
+</div>
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

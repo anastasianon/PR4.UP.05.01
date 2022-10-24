@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск универа</title>
+</head>
+<body>
+<div align="center">
+    <a href="/" style="font-size: 20px">Главное Меню</a>
+    <h2>Поиск университетов</h2>
+    <form method="post" th:action="${'/univer/filter/result'}">
+        <input type="text" name="titleuniversity">
+        <button type="submit">Найти</button>
+        <div th:each="el : ${result}">
+            <h3 th:text="${el.titleuniversity}"></h3>
+            <a th:href="'/univer/'+${el.id}">Подробнее</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

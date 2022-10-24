@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Добавление пользователя</title>
+</head>
+<body>
+<a href="/">Меню</a>
+<form th:action = "${'/prepod/add'}" method="post" th:object="${prepod}">
+    <input th:field="*{surname}" style="width: 250px; height: 40px; margin-top: 30px" type="text" name="Surname" placeholder="Введите фамилию"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+    <input th:field="*{name}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Name" placeholder="Введите имя"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+    <input th:field="*{salary}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Salary" placeholder="Введите оклад"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('salary')}" th:errors="*{salary}"></div><br>
+    <input th:field="*{predmets}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Predmets" placeholder="Введите предметы"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('predmets')}" th:errors="*{predmets}"></div><br>
+    <input th:field="*{openingHours}" style="width: 250px; height: 40px; margin: 2px" type="number" name="OpeningHours" placeholder="Введите часы работы"><br>
+    <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('openingHours')}" th:errors="*{openingHours}"></div><br>
+    <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Добавить преподавателя</button>
+</form>
+
+</body>
+</html>
+<style>
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+</style>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Добавление адреса</title>
+</head>
+<body>
+<div align="center">
+    <a href="/" style="font-size: 20px">Главное Меню</a>
+    <br>
+    <form th:action = "${'/adress/add'}" method="post" th:object="${address}">
+        <input th:field="*{addreses}" style="width: 250px; height: 40px; margin-top: 30px" type="text" name="address" placeholder="Введите адрес">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('addreses')}" th:errors="*{addreses}"></div><br>
+        <button type="submit">Добавить адрес</button>
+    </form>
+</div>
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

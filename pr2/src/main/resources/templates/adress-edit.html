@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Изменение данных адреса</title>
+</head>
+<body>
+
+<div align="center" th:each="el : ${address}">
+    <h1>Изменение адреса</h1>
+    <form method="post" th:object="${address}">
+        <input th:field="*{addreses}" style="display: list-item" type="text" th:value="${address.getAddreses()}" name="address" placeholder="Введите адрес">
+        <div th:if="*{#fields.hasErrors('adress')}" th:errors="*{addreses}"></div><br>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

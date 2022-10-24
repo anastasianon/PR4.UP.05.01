@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<a href="/">Меню</a>
+<h2>Фильтрация преподавателей</h2>
+<form method="post" th:action="${'/prepod/filter/result'}">
+    <input type="text" name="surname">
+    <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-left: 10px">Найти</button>
+    <div th:each="el : ${result}">
+        <h3 th:text="${el.surname}"></h3>
+        <h4 th:text="${el.predmets}"></h4>
+    </div>
+</form>
+
+
+</body>
+</html>
+<style>
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>

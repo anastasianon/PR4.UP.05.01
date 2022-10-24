@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование преподавателя</title>
+</head>
+<body>
+<div th:object="${prepod}">
+    <a th:href="'/prepod/'+${id}">Назад</a>
+</div>
+<div align="left" th:each="el : ${prepod}">
+    <h1>Изменение данных преподавателя</h1>
+    <form method="post" th:object="${prepod}">
+        <input th:field="*{surname}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${prepod.getSurname()}" name="Surname" placeholder="Напишите фамилию">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+        <input th:field="*{name}" style=" width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${prepod.getName()}" name="Name" placeholder="Напишите имя">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+        <input th:field="*{salary}" style="width: 250px; height: 40px; margin: 2px; display: list-item" th:value="${prepod.getSalary()}" type="text" name="Salary" placeholder="Напишите оклад"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('salary')}" th:errors="*{salary}"></div><br>
+        <input th:field="*{predmets}" style="width: 250px; height: 40px; margin: 2px; display: list-item" th:value="${prepod.getPredmets()}" type="text" name="Predmets" placeholder="Напишите предметы">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('predmets')}" th:errors="*{predmets}"></div><br>
+        <input th:field="*{openingHours}" style="width: 250px; height: 40px; margin: 2px; display: list-item" th:value="${prepod.getOpeningHours()}" name="OpeningHours" type="number" placeholder="Напишите часы работы">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('openingHours')}" th:errors="*{openingHours}"></div><br>
+        <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+</style>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редактирование студента</title>
+</head>
+<body>
+<div th:object="${student}">
+    <a th:href="'/student/'+${id}">Назад</a>
+</div>
+<div align="left" th:each="el : ${student}">
+    <h1>Изменение данных студента</h1>
+    <form method="post" th:object="${student}">
+        <input th:field="*{surname}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${student.getSurname()}" name="Surname" placeholder="Напишите фамилию"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+        <input th:field="*{name}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${student.getName()}" name="Name" placeholder="Напишите имя"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+        <input th:field="*{dormitories}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="checkbox" th:value="${student.getDormitories()}" name="Dormitories"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('dormitories')}" th:errors="*{dormitories}"></div><br>
+        <input th:field="*{groups}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="number" th:value="${student.getGroups()}" name="Groups" placeholder="Напишите группу"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('groups')}" th:errors="*{groups}"></div><br>
+        <input th:field="*{birthday}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="date" th:value="${student.getBirthday()}" name="Birthday"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
+        <div>
+            <label>Выберите университет</label>
+            <select name="universss_id">
+                <div th:each="r : ${univ}">
+                    <option  th:value="${r.id}" th:text="${r.titleuniversity}" >
+                    </option>
+                </div>
+            </select>
+        </div>
+        <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+</style>

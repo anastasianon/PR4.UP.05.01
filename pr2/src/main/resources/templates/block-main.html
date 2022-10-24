@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Block</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<h1>Все статьи</h1>
+<a href="/">Меню</a>
+<a href="/block/filter">Поиск статей</a>
+<a href="/block/add">Добавить статью</a>
+<div th:each="el : ${posts}">
+    <h2>-----------------------------------</h2>
+    <h3 th:text="${el.getTitle()}"></h3>
+    <h3 th:text="${el.getAnons()}"></h3>
+    <a th:href="'/block/'+${el.id}">Подробнее</a>
+</div>
+
+</body>
+</html>
+<style>
+    a {
+        background-color: red;
+        box-shadow: 0 5px 0 darkred;
+        color: white;
+        padding: 1em 1.5em;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    a:hover {
+        background-color: #ce0606;
+    }
+
+    a:active {
+        background-color: #FFA9A1;
+        box-shadow: none;
+        top: 5px;
+    }
+    html *{
+        font-family: "Plus Jakarta Sans" !important;
+    }
+    body {
+        height: 800px;
+        background: radial-gradient(white, #FFA9A1);
+    }
+</style>
