@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>ВХОД</title>
+</head>
+<body>
+<div align="center">
+  <div th:if="${param.error}">
+    Неверный пароль или логин
+  </div>
+  <div th:if="${param.logout}">
+    Вы вышли из аккаунта
+  </div>
+  <form th:action="@{/login}" method="post">
+    <h1>ЛОГИН</h1>
+    <label>Login</label>
+    <div style="width: 250px; height: 40px; margin: 1px">
+      <input required type="text" name="login"/>
+    </div>
+    <label>Password</label>
+    <div style="width: 250px; height: 40px; margin: 1px">
+      <input required type="password" name="password"/>
+    </div>
+    <div style="width: 250px; height: 40px; margin: 1px">
+      <input type="submit" value="Войти"/>
+    </div>
+  </form>
+  <a href="/registration">Регистрация</a>
+</div>
+
+</body>
+</html>
+<style>
+  body {
+    height: 800px;
+    background: radial-gradient(white, #FFA9A1);
+  }
+  html *{
+    font-family: "Plus Jakarta Sans" !important;
+  }
+  a {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: #ce0606;
+  }
+
+  a:active {
+    background-color: #FFA9A1;
+    box-shadow: none;
+    top: 5px;
+  }
+</style>

@@ -15,14 +15,16 @@
         <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('numbTel')}" th:errors="*{numbTel}"></div><br>
         <div>
             <label>Выберите адрес</label>
-            <select name="adress_id">
-                <div th:each="r : ${adddress}">
-                    <option  th:value="${r.id}" th:text="${r.addreses}" >
-                    </option>
-                </div>
+            <div style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+            <select th:field="*{address}" name="address">
+                <option th:each="address : ${addresses}"
+                        th:if="${(university.address != null && address.id == university.address.id) || address.university==null}"
+                        th:value="${address.id}"
+                        th:text="${address.addreses}">
+                </option>
             </select>
         </div>
-        <button type="submit">Добавить колледж</button>
+        <button type="submit">Добавить универ</button>
     </form>
 </div>
 </body>

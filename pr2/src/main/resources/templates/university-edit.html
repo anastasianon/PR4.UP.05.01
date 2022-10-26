@@ -15,11 +15,13 @@
         <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('numbTel')}" th:errors="*{numbTel}"></div><br>
         <div>
             <label>Выберите адрес для универа</label>
-            <select name="addresss_id" style="width: 250px; height: 40px; margin: 2px">
-                <div th:each="r : ${addresses}">
-                    <option  th:value="${r.id}" th:text="${r.addreses}" >
-                    </option>
-                </div>
+            <div style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+            <select th:field="*{address}" name="address" style="width: 250px; height: 40px; margin: 2px">
+                <option th:each="address : ${addresses}"
+                        th:if="${(univer.address != null && address.id == univer.address.id) || address.university==null}"
+                        th:value="${address.id}"
+                        th:text="${address.addreses}" >
+                </option>
             </select>
         </div>
         <button type="submit">Сохранить</button>

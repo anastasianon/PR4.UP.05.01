@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface StudentRepos extends CrudRepository<Student,Long> {
-    List<Student> findBysurnameContains(String surname);
+    Student findBysurnameContains(String surname);
 
 }

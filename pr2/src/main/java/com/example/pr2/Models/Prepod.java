@@ -5,8 +5,10 @@ import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.websocket.OnMessage;
+import java.util.Collection;
 
 @Entity
+@Table(name = "prepod")
 public class Prepod {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,16 +30,29 @@ public class Prepod {
     @Range(min = 0, max = 300, message = "Диапазон от 0 до 300")
     private Integer OpeningHours;
 
-    public Prepod(String Surname, String Name, Double salary, String Predmets, Integer OpeningHours) {
-        this.surname = Surname;
-        this.name = Name;
+    @OneToMany(mappedBy = "prepod", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Collection<Post> post;
+
+    public Prepod(Long id, String surname, String name, String predmets, Double salary, Integer openingHours, Collection<Post> post) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.predmets = predmets;
         this.salary = salary;
-        this.predmets = Predmets;
-        this.OpeningHours = OpeningHours;
+        OpeningHours = openingHours;
+        this.post = post;
     }
 
     public Prepod() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getSurname() {
@@ -55,20 +70,13 @@ public class Prepod {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getPredmets() {
         return predmets;
     }
 
     public void setPredmets(String predmets) {
         this.predmets = predmets;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Double getSalary() {
@@ -85,5 +93,13 @@ public class Prepod {
 
     public void setOpeningHours(Integer openingHours) {
         OpeningHours = openingHours;
+    }
+
+    public Collection<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(Collection<Post> post) {
+        this.post = post;
     }
 }

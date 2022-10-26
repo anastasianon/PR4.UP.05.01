@@ -11,6 +11,7 @@
   <h3 th:text="'Название: '+${el.title}"></h3>
   <h4 th:text="'Анонс: '+${el.anons}"></h4>
   <h5 th:text="'Текст: '+${el.full_text}"></h5>
+  <h5 th:text="'Преподаватель: '+${el.prepod.getSurname()}"></h5>
   <h5><a th:href="'/block/'+${el.id}+'/edit'">Редактировать</a></h5>
   <form th:action="'/block/' + ${el.id} + '/remove'" method="post">
     <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Удалить</button>

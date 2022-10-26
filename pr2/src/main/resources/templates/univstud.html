@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Студента в колледж</title>
+</head>
+<body>
+<h1>Добавление студента в университет</h1>
+<a href="/su/add" style="font-size: 20px">Переход к добавлению</a>
+<div th:each="el : ${students}">
+  <h3 th:text="${'Фамилия: '+el.getSurname()}" style="display: inline-block"></h3>
+  <h4 th:text="${'Универы: '+el.getUniversityList()}"></h4>
+</div>
+</body>
+</html>
+<style>
+  html *{
+    font-family: "Plus Jakarta Sans" !important;
+  }
+  a {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: #ce0606;
+  }
+
+  a:active {
+    background-color: #FFA9A1;
+    box-shadow: none;
+    top: 5px;
+  }
+  body {
+    height: 800px;
+    background: radial-gradient(white, #FFA9A1);
+  }
+</style>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>РЕГИСТРАЦИЯ</title>
+</head>
+<body>
+<div align="center">
+  <div th:if="${#messages}">
+    <p th:text="${message}"></p>
+  </div>
+  <h1>РЕГИСТРАЦИЯ</h1>
+  <form th:action="@{/registration}" method="post">
+    <label>Login</label>
+    <div style="width: 250px; height: 40px; margin: 1px">
+      <input required type="text" name="login"/>
+    </div>
+    <label>Password</label>
+    <div style="width: 250px; height: 40px; margin: 1px">
+      <input required type="password" name="password"/>
+    </div>
+    <div style="width: 250px; height: 40px; margin: 1px">
+      <input type="submit" value="Зарегистрироваться"/>
+    </div>
+    <a href="/login">Авторизация</a>
+  </form>
+</div>
+</body>
+</html>
+<style>
+  body {
+    height: 800px;
+    background: radial-gradient(white, #FFA9A1);
+  }
+  html *{
+    font-family: "Plus Jakarta Sans" !important;
+  }
+  a {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: #ce0606;
+  }
+
+  a:active {
+    background-color: #FFA9A1;
+    box-shadow: none;
+    top: 5px;
+  }
+</style>

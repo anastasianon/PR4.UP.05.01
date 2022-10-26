@@ -14,6 +14,15 @@
     <input th:field="*{title}" style="width: 250px; height: 50px; margin: 4px; display: list-item" type="text" th:value="${post.title}" name="title" placeholder="Введите название статьи">
     <input th:field="*{anons}" style="width: 250px; height: 50px; margin: 4px; display: list-item" type="text" th:value="${post.anons}" name="anons" placeholder="Введите анонс статьи">
     <textarea th:field="*{full_text}" style="width: 300px; height: 100px; margin: 4px; display: list-item" th:text="${post.getFull_text()}" name="full_text" placeholder="Введите текст статьи"></textarea>
+    <div>
+      <label>Выберите преподавателя</label>
+      <select name="prepod_id">
+        <div th:each="rr : ${prepodss}">
+          <option  th:value="${rr.id}" th:text="${rr.getSurname()}" >
+          </option>
+        </div>
+      </select>
+    </div>
     <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Сохранить</button>
   </form>
 </div>

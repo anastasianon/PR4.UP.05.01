@@ -17,15 +17,6 @@
     <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('groups')}" th:errors="*{groups}"></div><br>
     <input th:field="*{birthday}" style="width: 250px; height: 40px; margin: 2px" type="date" name="Birthday" placeholder="Введите день рождения"><br>
     <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
-    <div>
-        <label>Выберите университет</label>
-        <select name="univer_id">
-            <div th:each="r : ${univ}">
-                <option  th:value="${r.id}" th:text="${r.titleuniversity}" >
-                </option>
-            </div>
-        </select>
-    </div>
     <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Добавить студента</button>
 </form>
 </body>

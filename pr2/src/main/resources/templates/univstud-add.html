@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Студента в универ</title>
+</head>
+<body>
+<div align="center">
+  <form th:action="${'/su/add'}" method="post">
+    <select name="students">
+      <div th:each="element : ${studentess}">
+        <option th:text="${element.surname}"></option>
+      </div>
+    </select>
+    <select name="univers">
+      <div th:each="element : ${universs}">
+        <option th:text="${element.titleuniversity}"></option>
+      </div>
+    </select>
+    <br>
+    <button type="submit">Прикрепить студента к универу</button>
+  </form>
+</div>
+</body>
+</html>
+<style>
+  html *{
+    font-family: "Plus Jakarta Sans" !important;
+  }
+  a {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: #ce0606;
+  }
+
+  a:active {
+    background-color: #FFA9A1;
+    box-shadow: none;
+    top: 5px;
+  }
+  body {
+    height: 800px;
+    background: radial-gradient(white, #FFA9A1);
+  }
+</style>

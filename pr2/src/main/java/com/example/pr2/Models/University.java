@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "university")
@@ -25,16 +26,13 @@ public class University {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "university", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Collection<Student> students;
 
-    public University(Long id, String titleuniversity, Long numbTel, Address address, Collection<Student> students) {
-        this.id = id;
-        this.titleuniversity = titleuniversity;
-        NumbTel = numbTel;
-        this.address = address;
-        this.students = students;
-    }
+
+    @ManyToMany
+    @JoinTable(name = "UniverStudent",
+            joinColumns = @JoinColumn(name = "university_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private List<Student> studentList;
 
     public University() {
 
@@ -72,11 +70,19 @@ public class University {
         this.address = address;
     }
 
-    public Collection<Student> getStudents() {
-        return students;
+    public List<Student> getStudentList() {
+        return studentList;
     }
 
-    public void setStudents(Collection<Student> students) {
-        this.students = students;
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public University(Long id, String titleuniversity, Long numbTel, Address address, List<Student> studentList) {
+        this.id = id;
+        this.titleuniversity = titleuniversity;
+        NumbTel = numbTel;
+        this.address = address;
+        this.studentList = studentList;
     }
 }

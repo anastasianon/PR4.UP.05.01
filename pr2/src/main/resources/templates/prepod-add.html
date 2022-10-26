@@ -17,6 +17,7 @@
     <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('predmets')}" th:errors="*{predmets}"></div><br>
     <input th:field="*{openingHours}" style="width: 250px; height: 40px; margin: 2px" type="number" name="OpeningHours" placeholder="Введите часы работы"><br>
     <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('openingHours')}" th:errors="*{openingHours}"></div><br>
+
     <button type="submit" style="border-color: #ce0606; border-radius: 4px; background-color: indianred; width: 150px; height: 30px; margin-top: 10px">Добавить преподавателя</button>
 </form>
 

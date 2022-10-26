@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -34,17 +35,22 @@ public class Student {
     @Range(min=0, max=90, message = "Диапазон от 0 до 90")
     private Integer groups;
 
-    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
-    private University university;
 
-    public Student(Long id, String surname, String name, Boolean dormitories, Date birthday, Integer groups, University university) {
+
+    @ManyToMany
+    @JoinTable(name = "UniverStudent",
+            joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "university_id"))
+    private List<University> universityList;
+
+
+    public Student(Long id, String surname, String name, Boolean dormitories, Date birthday, Integer groups, List<University> universityList) {
         this.id = id;
         this.surname = surname;
         this.name = name;
         this.dormitories = dormitories;
         this.birthday = birthday;
         this.groups = groups;
-        this.university = university;
+        this.universityList = universityList;
     }
 
     public Student() {
@@ -99,11 +105,11 @@ public class Student {
         this.groups = groups;
     }
 
-    public University getUniversity() {
-        return university;
+    public List<University> getUniversityList() {
+        return universityList;
     }
 
-    public void setUniversity(University university) {
-        this.university = university;
+    public void setUniversityList(List<University> universityList) {
+        this.universityList = universityList;
     }
 }

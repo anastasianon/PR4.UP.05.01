@@ -16,6 +16,7 @@
     <h2>-----------------------------------</h2>
     <h3 th:text="${el.getTitle()}"></h3>
     <h3 th:text="${el.getAnons()}"></h3>
+    <h3 th:text="${el.getPrepod().getSurname()}"></h3>
     <a th:href="'/block/'+${el.id}">Подробнее</a>
 </div>
 

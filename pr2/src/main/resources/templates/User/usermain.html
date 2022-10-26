@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <title>Список пользователей</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+
+<div th:each="el : ${users}">
+  <p th:text="${el.username}"></p>
+  <p th:text="${el.roles}"></p>
+  <a th:href="'/admin/' + ${el.id} + '/edit'" class="bott">Редактировать</a>
+</div>
+</body>
+</html>
+<style>
+  html *{
+    font-family: "Plus Jakarta Sans" !important;
+  }
+  a {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: #ce0606;
+  }
+
+  a:active {
+    background-color: #FFA9A1;
+    box-shadow: none;
+    top: 5px;
+  }
+</style>
